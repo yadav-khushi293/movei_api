@@ -306,10 +306,11 @@ h4 {
 @media (max-width: 320px) {
   #info {
     grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
   }
   .card_div,
   img {
-    width: 100%;
+    width:90%;
     object-fit: contain;
     height: auto;
   }
@@ -319,4 +320,130 @@ h4 {
   .name_div {
     height: 360px;
   }
+  .child1>a{
+    display: none;
+  }
+  .flex {
+     padding: 0 0px !important; 
+     justify-content: center;
+     gap: 6px;
+     width: 50%;
+     margin: auto;
+
 }
+.rounded-2{
+  width: 230px;
+}
+h1 {
+    color: red;
+    font-size: 30px;
+}
+.card_div {
+        height: 642px; 
+        box-shadow: none;
+        border-radius:70px;
+    }
+     .card_div,img {
+    width:100%;
+    object-fit: contain;
+    height: auto;
+      border-radius:10px;
+  }
+  .name_div {
+    font-weight: 600;
+    padding: 20px;
+    height: 200px;
+    border-bottom-left-radius: 10px;
+   border-bottom-right-radius: 10px; 
+}
+}
+
+  @media (min-width: 322px) and (max-width:380px){
+   #info {
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+  }
+  .card_div,
+  img {
+    width:90%;
+    object-fit: contain;
+    height: auto;
+  }
+  .card_div {
+    height: 780px;
+  }
+  .name_div {
+    height: 360px;
+  }
+  .child1>a{
+    display: none;
+  }
+  .flex {
+     padding: 0 0px !important; 
+     justify-content: center;
+     gap: 6px;
+     width: 50%;
+     margin: auto;
+
+}
+.rounded-2{
+  width: 230px;
+}
+h1 {
+    color: red;
+    font-size: 30px;
+}
+.card_div {
+        height: 642px; 
+        box-shadow: none;
+        border-radius:70px;
+    }
+     .card_div,img {
+    width:100%;
+    object-fit: contain;
+    height: auto;
+      border-radius:10px;
+  }
+  .name_div {
+    font-weight: 600;
+    padding: 20px;
+    height: 200px;
+    border-bottom-left-radius: 10px;
+   border-bottom-right-radius: 10px; 
+}
+  }
+
+    @media (min-width:441px) and (max-width:840px){
+     h1 {
+    color: red;
+    font-size:20px;
+}
+  .child1 > a{
+     display: none;
+    }
+    .rounded-2{
+  width: 230px;
+}
+.flex {
+     padding: 0 0px !important; 
+     justify-content: center;
+     gap: 6px;
+     width: 50%;
+     margin: auto;
+
+}
+#info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+.card_div,
+  img {
+    width:90%;
+    object-fit: contain;
+    height: auto;
+  }
+ 
+    }
