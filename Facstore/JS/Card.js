@@ -4,14 +4,14 @@ let Api = `https://fakestoreapi.com/products`
 let storage = JSON.parse(localStorage.getItem('token'));
 
 let cartArr = JSON.parse(localStorage.getItem('cartItem')) || [];
-console.log( cartArr.length);
+//console.log( cartArr.length);
 
 const path = window.location.pathname;
 console.log( path);
 
 const cartLength = document.querySelector('span');
 if (path === '/Facstore/HTML/Card.html') {
-    cartLength.style.display = cartArr.length < 0 ? 'none' : 'block';
+    cartLength.style.display = cartArr.length < 0 ? 'none' : 'block';//ye chis sir se puch na hai 
     cartLength.className = cartArr.length > 0 ? 'cartLength-active' : 'none';
     cartLength.innerText = cartArr.length > 0 ? cartArr.length : '';
 }
