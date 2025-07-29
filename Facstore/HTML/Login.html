@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="shortcut icon" href="./utils/logo.png" />
+
+    <link rel="stylesheet" href="../CSS/Card.css">
+</head>
+
+<body id="login">
+    <button onclick="backFun()">back to home</button>
+    
+    <form class="form" onsubmit="formSubmitData(event)">
+
+        <section class="email">
+            <label for="username">email</label>
+            <input type="text" id="username" placeholder="enter your email...." />
+        </section>
+
+        <section class="pass">
+            <label for="password">password</label>
+            <input type="password" id="password" placeholder="enter your password...." />
+        </section>
+
+        <input type="submit" value="submit">
+
+    </form>
+</body>
+<script src="../JS/Card.js"></script>
+
+</html>
