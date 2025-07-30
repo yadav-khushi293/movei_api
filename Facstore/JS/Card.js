@@ -44,6 +44,7 @@ const storeUI = (value) => {
         const rate = document.createElement('h3');
         const count = document.createElement('h3');
         const button = document.createElement('button');
+        
 
         img.src = element.image;
         id.innerText =`ID: ${element.id}`;
@@ -152,7 +153,9 @@ const backFun = () => {
 const chageToCart = () => {
     window.location = 'Card1.html'
 }
-
+const checkoutTocard=()=>{
+     window.location = 'Chackout.html'
+}
 
 const cartDisplay = () => {
     storeUI(cartArr)

@@ -8,6 +8,10 @@
   list-style: none;
   text-transform: capitalize;
 }
+a{
+    text-decoration: none;
+    color: inherit;
+}
 
 #home-page > nav > p > img {
   width: 60px;
@@ -16,7 +20,7 @@
 }
 nav{
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 10px;
     height: 70px;
     
 }
@@ -37,8 +41,8 @@ ul {
 }
 
 nav > p > svg {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
 }
 
 #dataInfo {
@@ -63,7 +67,7 @@ nav > p > svg {
 
 .card-div {
   width: 450px;
- height: 590px;
+ height: 650px;
  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
  border-radius: 30px;
  padding: 10px 15px;
@@ -79,6 +83,16 @@ nav > p > svg {
   background: rgba(92, 92, 241, 0.856);
   border: none;
   color: #fff;
+}
+.card-div > button:hover{
+  background-color: red;
+  transition: all 0.5s ease-in-out;
+  color: black;
+}
+.form > section + input:hover{
+   background-color: red;
+  transition: all 0.5s ease-in-out;
+  color: black;
 }
 .title{
     padding: 5px 0px;
@@ -103,15 +117,15 @@ nav > p > svg {
 }
 
 .cartLength-active {
-  text-align: center;
-  padding: 1px;
-  position: absolute;
-  top: 37px;
-  border-radius: 50%;
-  background: tomato;
-  height: 20px;
-  width: 20px;
-  left: 61%;
+    text-align: center;
+    padding: 1px;
+    position: absolute;
+    top: 38px;
+    border-radius: 50%;
+    background: tomato;
+    height: 29px;
+    width: 40px;
+    left: 60%;
 }
 
 
@@ -123,10 +137,13 @@ nav > p > svg {
   justify-content: center;
   align-items: center;
   height: 50vh;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   gap: 10px;
 }
 
+label{
+  font-size: 20px;
+}
 .form > section {
   display: flex;
   flex-direction: column;
@@ -134,6 +151,25 @@ nav > p > svg {
 }
 .form > section > input {
   padding: 20px 10px;
+  width:300px;
+  font-size: 18px;
   border-radius: 10px;
   border: 0.5px solid gray;
+}
+.btn_1{
+  width: 15%;
+  height: 60px;
+  font-size: 19px;
+  font-weight: bold;
+  color: #fff;
+  background-color: crimson;
+  text-align: center;
+  border-radius: 25px;
+  margin: 30px 20px;
+  border: transparent;
+}
+.btn_1:hover{
+  background-color: aqua;
+  transition: all 0.5s ease-in-out;
+  color:black
 }
