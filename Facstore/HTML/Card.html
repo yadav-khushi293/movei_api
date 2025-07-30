@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fake Store</title>
     <link rel="stylesheet" href="../CSS/Card.css">
-    <link rel="shortcut icon" href="./utils/logo.png" />
+    <link rel="shortcut icon" href="../../img/logo.png" />
 </head>
 
 <body id="home-page" onload="datafetch()">
     <nav>
         <p>
-            <img src="../../img/localshop_img.png" alt="logo">
+            <img src="../../img/logo.png" alt="logo">
         </p>
         <ul>
             <li>home</li>
-            <li>product</li>
+            <li  onclick="checkoutTocard()">checkout</li>
+
              <li onclick="chageToCart()">cart</li>
             <span></span> 
            <li onclick="changeToLogin()">auth</li>
