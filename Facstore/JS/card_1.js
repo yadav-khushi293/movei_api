@@ -39,7 +39,7 @@ const storeUI = (value) => {
           pricingDiv.classList.add('pricingDiv_1');
           category.classList.add('category_1')
 
-        button.innerText = 'add'
+        // button.innerText = 'add'
 
 
 
