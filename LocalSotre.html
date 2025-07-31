@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <body onload="append()">
+
+    <form onsubmit="formData(event)">
+        <input placeholder="enter your name" type="text" name="userName" id="userName" autocomplete="email" />
+
+        <input placeholder="enter your pass" type="password" name="userPass" id="userPass"autocomplete="current-password" />
+
+        <input type="submit" value="click me">
+
+    </form>
+
+    <div id="dataAppends"></div>
+</body>
+
+
+<script>
+
+
+    let dataBase =JSON.parse(localStorage.getItem('sirajFormData')) || [];
+    
+
+    function formData(e){
+
+        e.preventDefault();
+
+      let userName=document.querySelector('#userName');
+      let userPass = document.querySelector('#userPass');
+
+      // creat object
+
+      let objData = {
+        id: Date.now(),
+        name:userName,
+        pass:userPass,
+      };
+
+      dataBase.push(objData);
+      localStorage.setItem('sirajFormData',JSON.stringify(objData));
+      append()
+
+      document.querySelector('#userName').Value='';
+      document.querySelector('#userPass').Value='';
+
+    }
+     
+    const append =()=>{
+        const maindiv = document.querySelector('#dataAppends');
+
+        dataBase.map((element)=>{
+        
+            const div = document.createElement('div');
+            const id = document.createElement('id');
+            const userName= document.createElement('h4');
+            const userPass= document.createElement('h4');
+            const btn_1 = document.createElement('button');
+            const btn_2= document.createElement('button');
+
+            //div div name 
+
+
+            div.classList.add('card-div');
+            btn_1.innerText = 'edit';
+            btn_2.textContent = 'delete';
+            btn_1.className = 'edit-btn';
+            btn_2.className = 'delete-btn';
+
+
+            id.textContent = element.id;
+            userName.textContent = element.name;
+            userPass.textContent = element.pass;
+
+           div.append(id,userName,userPass);
+           maindiv.append(div);
+        });
+    };
+
+
+
+</script>
+
+</html>
