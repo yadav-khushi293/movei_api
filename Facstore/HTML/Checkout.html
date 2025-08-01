@@ -1,99 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../img/logo.png">
+    <title>Checkout Page</title>
+    <link rel="shortcut icon" href="./Utils/Logo.png">
+    <script src="../JS/checkout.js"></script>
     <link rel="stylesheet" href="../CSS/Checkout.css">
 </head>
-<body>
-      <nav>
-        <p>
-            <img src="../../img/logo.png" alt="logo" class="img_1">
-        </p>
-        <ul>
-            <li>home</li>
-            <li>Check-OUT</li>
-             <li>cart</li>
-           <li>auth</li>
-        </ul>
-        <p>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#1f1f1f">
-                <path
-                    d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z" />
-            </svg>
-        </p>
-    </nav>
-     
-    <!-------div-->
 
+<body id="login" onload="DataCheckout()">
 
-    <div class="parents">
-        <div class="parents_child-1">
-            <h1>CHECKOUT</h1>
-            <p class="p1">Choose Deliver address and payment method</p>
-            <hr/>
-             
-            <div class="Deliver_1">
-            <h1 claas="head_1">DELIVERY ADDRESS</h1>
-            <button class="btn_1">+ Add New Address </button>
+    <!-- Checkout Page -->
+    <button onclick="backFun()">back to home</button>
+
+    <div class="main_parent">
+        <div class="main_child1">
+            <h1>Checkout</h1>
+            <div class="dataCart"></div>
+            <h3>Choose delivery address and payment method</h3>
+            <hr>
+
+            <!-- Address -->
+
+            <div class="address">
+                <div class="add_child1">
+                    <h4>delivery address</h4>
+                    <button>+ add new address</button>
+                </div>
+                <div class="add_child2">
+                    <img src="https://raw.githubusercontent.com/hetuk2005/Fake_Store/9a8c8f855f8006d72ffe1757e0966865b1e8230d/Utils/Location.svg"
+                        alt="Location Image">
+                    <div class="text">
+                        <h5>joe's home address</h5>
+                        <p>1234 Main Street</p>
+                        <p>Anytown, USA 12345</p>
+                    </div>
+                </div>
+
+                <!-- End Of Address -->
+
+                <!-- Payment Method -->
+
+                <h4>Payment Method</h4>
+                <div class="payement1">
+                    <div class="payment_child1">
+                        <img src="https://raw.githubusercontent.com/hetuk2005/Fake_Store/9a8c8f855f8006d72ffe1757e0966865b1e8230d/Utils/Selected.svg"
+                            alt="Selected Icon">
+                        <div class="text">
+                            <h4>Paypal</h4>
+                            <p>my paypal@example.com</p>
+                        </div>
+                    </div>
+                    <div class="payment_child2">
+                        <p>paypal</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="payement2">
+                    <div class="payment_child1">
+                        <img src="https://raw.githubusercontent.com/hetuk2005/Fake_Store/9a8c8f855f8006d72ffe1757e0966865b1e8230d/Utils/Unselected.svg"
+                            alt="Unselected Icon">
+                        <div class="text">
+                            <h4>Visa</h4>
+                            <p>**** **** **** 2974</p>
+                        </div>
+                    </div>
+                    <div class="payment_child2">
+                        <p>stripe</p>
+                    </div>
+                </div>
+                <hr>
             </div>
-         
-            <h2>PAYMENT METHOD</h2>
-            <div class="paymen_1">
-                <p class="p4">🔵 PAYPAL<br>mypaypal@example.com</br></p>
-                <h4>Paypal</h4>   
-            </div>
-           <hr>
-
-             <div class="paymen_1">
-                <p class="p4">🔵 PAYPAL<br>*** *** ** 2789</br></p>
-                <h4>Script</h4>   
-            </div>
-           <hr>
-
-
         </div>
 
+        <!-- End Of Payemnt -->
 
+        <!-- Order Summary -->
 
-         <div class="parents_child-2">
-            <h2>ORDER SUMMMARY</h2>
-
-            <div class="order_1">
-                <p class="p2">Beanie, black</p>
-                <h4>$24</h4>
+        <div class="main_child2">
+            <h4>Order Summary</h4>
+            <div class="order_child1">
+                <p>Beanie, black</p>
+                <p>$24</p>
             </div>
-            <div class="order_1">
-                 <p class="p2">Beanie, origin</p>
-                <h4>$24</h4>
+            <div class="order_child1">
+                <p>Beanie, orange</p>
+                <p>$24</p>
             </div>
-             <hr class="hartag_1"/>
-
-            <div class="order_2">
-                <p class="p3">Total Price(item)</p>
-                <h4>$10</h4>
+            <hr>
+            <div class="order_child2">
+                <p>Total Price (item)</p>
+                <p id="totalPrice">₹0</p>
             </div>
-           <div class="order_2">
-            <p class="p3">shopping Tax & Fee</p>
-                <h4>$10</h4>
-           </div>
-           <div class="order_2">
-            <p class="p5">Grand Total</p>
-                <h4>$10</h4>
-           </div>
-           
-           <button class="btn_2">checkout</button>
-         </div>
+            <div class="order_child2">
+                <p>Shipping Tax & Fee</p>
+                <p id="tax">₹0</p>
+            </div>
+            <div class="order_child3">
+                <p>Grand Total</p>
+                <p id="final_GT">₹0</p>
+            </div>
+            <button>Checkout</button>
+        </div>
 
-
-
-
-
-
+        <!-- End Of Order Summary -->
     </div>
-
+    <!-- End Of Checkout Page -->
 
 </body>
+
 </html>

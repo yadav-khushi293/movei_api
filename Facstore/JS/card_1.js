@@ -1,9 +1,30 @@
-let cartArr = JSON.parse(localStorage.getItem('cartItem')) || [];
-console.log(cartArr);
+let cartArr = JSON.parse(localStorage.getItem('cartItem'));
+
+let tokenStorage = JSON.parse(sessionStorage.getItem('token'));
+
+if (!tokenStorage) {
+    window.location = 'Login.html'
+}
+
+const result = cartArr.reduce((acc, item) => {
+    const existing = acc.find((el) => el.id === item.id);
+    if (existing) {
+        existing.count += 1; // increment count
+    } else {
+        acc.push({ ...item }); // clone item
+    }
+    return acc;
+}, []);
+
+cartArr = result;
+
+localStorage.setItem('cartItem', JSON.stringify(cartArr));
+
 
 
 const storeUI = (value) => {
     const dataInfo = document.querySelector("#dataInfo");
+    dataInfo.innerHTML=''
 
     value?.forEach((element) => {
         console.log( element);
@@ -18,6 +39,7 @@ const storeUI = (value) => {
         const rate = document.createElement('h3');
         const count = document.createElement('h3');
         const button = document.createElement('button');
+         const checkout_btn = document.createElement('button');
         
 
         img.src = element.image;
@@ -28,10 +50,12 @@ const storeUI = (value) => {
         description.innerText = element.description;
         rate.innerText = ` Rate:  ${element.rating. rate}`;
         count.innerText = `Count: ${element.rating.count}`;
+         checkout_btn.innerText = 'checkout';
     
 
 
         button.innerText = 'remove';
+         checkout_btn.classList.add('checkout-btn');
         div.classList.add('card-div');
         pricingDiv.classList.add('card-price-div');
         description.classList.add('text_div');
@@ -55,24 +79,13 @@ const storeUI = (value) => {
             localStorage.setItem('cartItem',JSON.stringify(cartArr));
              storeUI(cartArr);
         })
-        
-
-
-
-        // button.addEventListener('click', function () {
-        //     cartArr.push(element);
-        //     localStorage.setItem('cartItem', JSON.stringify(cartArr));
-        //     if (cartArr.length && path === '/Project/FakeStore/index.html') {
-        //         cartLength.style.display = 'block'
-        //         cartLength.className = 'cartLength-active';
-        //         cartLength.innerText = cartArr.length
-        //     }
-        // })
-
+        checkout_btn.addEventListener('click', () => {
+            window.location = 'Checkout.html'
+        })
 
         pricingDiv.append( rate, count);
 
-        div.append(img, id, title, description,category,price, pricingDiv, button);
+        div.append(img, id, title, description,category,price, pricingDiv, button, checkout_btn);
 
         dataInfo.append(div);
 
@@ -92,9 +105,9 @@ const backFun = () => {
 const chageToCart = () => {
     window.location = 'Card1.html'
 }
-const checkoutTocard=()=>{
-     window.location = 'Chackout.html'
-}
+// const checkoutTocard=()=>{
+//      window.location = 'Chackout.html'
+// }
 
 const cartDisplay = () => {
     storeUI(cartArr)

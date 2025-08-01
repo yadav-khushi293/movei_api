@@ -1,21 +1,24 @@
 let Api = `https://fakestoreapi.com/products`
 
 
-let storage = JSON.parse(localStorage.getItem('token'));
+let storage = JSON.parse(sessionStorage.getItem('token'));
 
 let cartArr = JSON.parse(localStorage.getItem('cartItem')) || [];
 //console.log( cartArr.length);
 
 const path = window.location.pathname;
-console.log( path);
+// console.log( path);
 
 const cartLength = document.querySelector('span');
+
+
+function cartManupulation(){
 if (path === '/Facstore/HTML/Card.html') {
     cartLength.style.display = cartArr.length < 0 ? 'none' : 'block';//ye chis sir se puch na hai 
     cartLength.className = cartArr.length > 0 ? 'cartLength-active' : 'none';
     cartLength.innerText = cartArr.length > 0 ? cartArr.length : '';
 }
-
+}
 
 
 const datafetch = async () => {
@@ -100,9 +103,9 @@ const formSubmitData = async (e) => {
     const loginApi = `https://fakestoreapi.com/auth/login`;
 
 
-    const email = document.querySelector("#username").value;
+    const email = document.querySelector("#username").value.trim();
     console.log( typeof email);
-    const pass = document.querySelector("#password").value;
+    const pass = document.querySelector("#password").value.trim();
     console.log( typeof pass);
 
     /* 
@@ -126,10 +129,9 @@ const formSubmitData = async (e) => {
         let data = await res.json();
         console.log( data);
 
-        localStorage.setItem('token', JSON.stringify(data.token));
-        if (storage) {
-            window.location = 'Login.html';
-            localStorage.removeItem('token');
+        sessionStorage.setItem('token', JSON.stringify(data.token));
+        if (data.token) {
+            window.location = 'Card1.html';           
         }
     } catch (error) {
         console.log( error);
@@ -156,6 +158,18 @@ const chageToCart = () => {
 const checkoutTocard=()=>{
      window.location = 'Chackout.html'
 }
+
+
+const logOut = () => {
+    if (storage) {
+        localStorage.removeItem('token')
+        alert(`token removed...✔`)
+    }
+    else {
+        alert(`empty token`)
+    }
+}
+
 
 const cartDisplay = () => {
     storeUI(cartArr)
