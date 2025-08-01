@@ -1,69 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Local Storage</title>
 </head>
- <body onload="append()">
 
+<body onload="append()">
     <form onsubmit="formData(event)">
         <input placeholder="enter your name" type="text" name="userName" id="userName" autocomplete="email" />
-
-        <input placeholder="enter your pass" type="password" name="userPass" id="userPass"autocomplete="current-password" />
-
+        <input placeholder="enter your pass" type="password" name="userPass" id="userPass"
+            autocomplete="current-password" />
         <input type="submit" value="click me">
-
     </form>
-
     <div id="dataAppends"></div>
 </body>
-
-
 <script>
+    let dataBase = JSON.parse(localStorage.getItem('sirajFormData')) || [];
 
-
-    let dataBase =JSON.parse(localStorage.getItem('sirajFormData')) || [];
-    
-
-    function formData(e){
-
+    function formData(event) {
         e.preventDefault();
 
-      let userName=document.querySelector('#userName');
-      let userPass = document.querySelector('#userPass');
+        let userName = document.querySelector('#userName').value;
+        // console.log('🚀 ~ userName:', userName);
+        let userPass = document.querySelector('#userPass').value;
+        // console.log('🚀 ~ userPass:', userPass);
 
-      // creat object
+        // create object 
 
-      let objData = {
-        id: Date.now(),
-        name:userName,
-        pass:userPass,
-      };
-
-      dataBase.push(objData);
-      localStorage.setItem('sirajFormData',JSON.stringify(objData));
-      append()
-
-      document.querySelector('#userName').Value='';
-      document.querySelector('#userPass').Value='';
+        let objData = {
+            id: Date.now(),
+            name: userName,
+            pass: userPass
+        };
+        // console.log('🚀 ~ objData:', objData);
+        dataBase.push(objData);
+        localStorage.setItem('sirajFormData', JSON.stringify(dataBase));
+        append()
+        document.querySelector('#userName').value = '';
+        document.querySelector('#userPass').value = '';
 
     }
-     
-    const append =()=>{
-        const maindiv = document.querySelector('#dataAppends');
 
-        dataBase.map((element)=>{
-        
+
+    const append = () => {
+        const mainDiv = document.querySelector('#dataAppends');
+        mainDiv.innerHTML = '';
+        // dataBase map
+
+        dataBase.forEach((element) => {
             const div = document.createElement('div');
-            const id = document.createElement('id');
-            const userName= document.createElement('h4');
-            const userPass= document.createElement('h4');
+            const id = document.createElement('h1');
+            const userName = document.createElement('h3');
+            const userPass = document.createElement('h3');
             const btn_1 = document.createElement('button');
-            const btn_2= document.createElement('button');
+            const btn_2 = document.createElement('button');
 
-            //div div name 
-
+            // naam karan.
 
             div.classList.add('card-div');
             btn_1.innerText = 'edit';
@@ -72,15 +66,21 @@
             btn_2.className = 'delete-btn';
 
 
+            // here we set the value line-wise.
+
             id.textContent = element.id;
             userName.textContent = element.name;
             userPass.textContent = element.pass;
 
-           div.append(id,userName,userPass);
-           maindiv.append(div);
-        });
-    };
 
+            div.append(id, userName, userPass, btn_1, btn_2);
+            mainDiv.append(div);
+
+
+        })
+
+
+    };
 
 
 </script>
