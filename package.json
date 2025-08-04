@@ -1,0 +1,24 @@
+{
+  "name": "movei_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadav-khushi293/movei_api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yadav-khushi293/movei_api/issues"
+  },
+  "homepage": "https://github.com/yadav-khushi293/movei_api#readme",
+  "description": "",
+  "dependencies": {
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
