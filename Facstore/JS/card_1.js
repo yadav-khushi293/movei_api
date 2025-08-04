@@ -1,13 +1,17 @@
-let cartArr = JSON.parse(localStorage.getItem('cartItem'));
-
+// let cartArr = JSON.parse(localStorage.getItem('cartItem'));
+let cartArr = JSON.parse(localStorage.getItem('cartItem')) || [];
 let tokenStorage = JSON.parse(sessionStorage.getItem('token'));
+
+console.log(cartArr)
 
 if (!tokenStorage) {
     window.location = 'Login.html'
 }
 
 const result = cartArr.reduce((acc, item) => {
-    const existing = acc.find((el) => el.id === item.id);
+console.log(item)
+   const existing = acc.find((el) => el.id === item.id);
+
     if (existing) {
         existing.count += 1; // increment count
     } else {
@@ -112,7 +116,3 @@ const chageToCart = () => {
 const cartDisplay = () => {
     storeUI(cartArr)
 }
-
-
-
-
