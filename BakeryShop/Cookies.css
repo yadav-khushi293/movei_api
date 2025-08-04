@@ -1,0 +1,98 @@
+
+            @import url('https://fonts.googleapis.com/css2?family=Playwrite+DK+Loopet:wght@100..400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        *{
+            padding: 0px;
+            margin: 0px;
+             box-sizing: border-box;
+            text-transform: capitalize;
+            font-family: Roboto;
+        }
+        .detailDiv{
+         display: grid;
+            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 10px 0;
+        }
+
+          #info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            gap: 30px;
+            text-align: center;
+
+        }
+          .card_div {
+            width: 450px;
+            height: 500px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 30px;
+            padding: 10px 15px;
+        }
+
+        img {
+            width: inherit;
+            height: 250px;
+            padding: 10px 0px;
+            width: 250px;
+            object-fit: cover;
+            border-radius: inherit;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+       .card_div>p,
+        .detail_div_1>h3 {
+            padding: 20px 0;
+
+        }
+        h4{
+            padding: 10px 0px;
+            font-size: 20px;
+        }
+       h3{
+        padding: 5px 0px;
+       }
+        .detail_div>p {
+            padding: 2px 0 !important;
+        }
+
+        .detail_div_1 {
+            padding: 20px 20px;
+        }
+       .reating_1{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        font-size: 20px;
+       }
+       .text_div{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 15px;
+       }
+       .shop_img{
+        width: 100px;
+        height: 100px;
+          border-radius: 50px;
+       }
+       .shop_card{
+        width: 120px;
+        height: 100px;
+
+       }
+       .parents_div{
+        border: 1px solid black;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content:space-around;
+       }
+       .child{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+       }
