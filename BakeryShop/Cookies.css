@@ -7,35 +7,40 @@
             text-transform: capitalize;
             font-family: Roboto;
         }
+        body{
+            background-color: rgba(0, 0, 0, 0.3);
+        }
         .detailDiv{
          display: grid;
             align-items: center;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 0fr);
             gap: 20px;
             padding: 10px 0;
+            
         }
 
           #info {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            justify-items: center;
+            justify-items:center;
             gap: 30px;
             text-align: center;
 
         }
           .card_div {
-            width: 450px;
-            height: 500px;
+           width: 410px;
+           height: 490px;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             border-radius: 30px;
             padding: 10px 15px;
+            background-color: #fff;
+            
         }
 
         img {
-            width: inherit;
             height: 250px;
             padding: 10px 0px;
-            width: 250px;
+            width: 320px;
             object-fit: cover;
             border-radius: inherit;
             border-bottom-left-radius: 0;
