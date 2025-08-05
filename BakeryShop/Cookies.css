@@ -7,6 +7,64 @@
             text-transform: capitalize;
             font-family: Roboto;
         }
+        select{
+          height: 50px !important;
+          border-radius: 8px;
+          width: 120px !important;
+          text-align: center;
+          font-size: 22px;
+          color: rgb(54, 53, 53);
+        }
+          nav {
+            border: 3px solid;
+            border-radius: 15px;
+            height: 80px;
+            width: 90% ;
+            margin:20px  auto;
+            /* margin: 20px 0; */
+            padding: 12px 0px;
+        }
+       .serchbar{
+        height: 50px;
+        text-align: center;
+        font-size: 20px;
+        border: 3px solid black;
+        border-radius: 7px;
+       }
+        ul>img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+
+        ul>input {
+            width: 270px;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            list-style-type: none;
+            font-weight: 700;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        option,
+        select {
+            font-size: large;
+            font-weight: 700;
+            width: 100px;
+            height: 30px;
+        }
+
+        select {
+            border: 2px solid;
+        }
+
+
+
         body{
             background-color: rgba(0, 0, 0, 0.3);
         }
@@ -34,7 +92,7 @@
             border-radius: 30px;
             padding: 10px 15px;
             background-color: #fff;
-            
+
         }
 
         img {
