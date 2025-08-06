@@ -11,10 +11,9 @@ const path = window.location.pathname;
 
 const cartLength = document.querySelector('span');
 
-
 function cartManupulation(){
 if (path === '/Facstore/HTML/Card.html') {
-    cartLength.style.display = cartArr.length < 0 ? 'none' : 'block';//ye chis sir se puch na hai 
+    cartLength.style.display = cartArr.length < 0 ? 'none' : 'block'; 
     cartLength.className = cartArr.length > 0 ? 'cartLength-active' : 'none';
     cartLength.innerText = cartArr.length > 0 ? cartArr.length : '';
 }
