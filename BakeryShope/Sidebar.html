@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Wise</title>
+    <style>
+ 
+
+.slide {
+  height: 100%;
+  width: 280px;
+  position: absolute;
+  background-color: #fff;
+  transition: 0.6s ease;
+  transform: translateX(-280px);
+}
+
+h2 {
+  color: #2c2f3a;
+  font-weight: 800;
+  text-align: right;
+  padding: 10px 0;
+  padding-right: 30px;
+  pointer-events: none;
+}
+
+
+
+
+
+input {
+  display: none;
+  visibility: hidden;
+}
+
+.taggle {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 15px;
+  left: 15px;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.taggle .common {
+  position: absolute;
+  height: 2px;
+  width: 20px;
+  background-color: #2c2f3a;
+  border-radius: 50px;
+  transition: 0.3s ease;
+}
+
+.taggle .top_line {
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.taggle .middle_line {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.taggle .bottom_line {
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input:checked ~ .taggle .top_line {
+  left: 2px;
+  top: 14px;
+  width: 25px;
+  transform: rotate(45deg);
+}
+
+input:checked ~ .taggle .bottom_line {
+  left: 2px;
+  top: 14px;
+  width: 25px;
+  transform: rotate(-45deg);
+}
+
+input:checked ~ .taggle .middle_line {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+input:checked ~ .slide {
+  transform: translateX(0);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 5);
+  background-color: #f9fbfc;
+}
+.logo-img{
+  width: 70px;
+  height: 70px;
+}
+    </style>
+  </head>
+  <body>
+    <label>
+      <input type="checkbox" />
+      <div class="taggle">
+        <img src="../img/Bakery Logo.svg" al="Logo" class="logo-img">
+      </div>
+
+      <div class="slide">
+        <h2>Menu</h2>
+        <ul>
+
+          <li>
+              Filter
+          </li>
+
+          <li>
+             High To Low
+          </li>
+
+          <li>
+             Low To High
+          </li>
+
+        </ul>
+
+      </div>
+
+    </label>
+  </body>
+</html>

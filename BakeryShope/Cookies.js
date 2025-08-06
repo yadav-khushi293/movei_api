@@ -1,6 +1,9 @@
 const api = `http://localhost:3000/cookie`;
 
+
 const storage = JSON.parse(sessionStorage.getItem('category'));
+
+//filter the code 
 
 const countCategory = () => {
 
@@ -32,13 +35,16 @@ const ApiCall = () => {
             }, {});
 
             sessionStorage.setItem('category', JSON.stringify(countCategory))
+
             appendsFunc(res);
+
+        
         })
         .catch((err) => console.log(err));
 };
 
 const appendsFunc = (data) => {
-    let dataShow = document.getElementById('#info');
+    let dataShow = document.querySelector('#info');
     dataShow.innerHTML = ''
     data.forEach((element) => {
         let cardDiv = document.createElement('div');
@@ -54,9 +60,15 @@ const appendsFunc = (data) => {
 
 
         cardDiv.className = 'card_div';
-        description.className = "text_div";
-        title.className = "title_div";
-        rating.className = "reating_1"
+        description.className = "text_div  placeholder";
+        title.className = "title_div  placeholder";
+        rating.className = "reating_1  placeholder";
+        id.className="placeholder";
+        price.className="placeholder";
+         category.className="placeholder";
+         img.className="placeholder";
+
+
 
         img.src = element.image;
         title.innerText = element.title;
@@ -75,6 +87,8 @@ const appendsFunc = (data) => {
 
 };
 
+
+//This for serching
 const searchFunc = async () => {
 
 
@@ -96,11 +110,27 @@ const searchFunc = async () => {
 );
  appendsFunc(uniqueSearchArr);
 
-        // console.log(' ~ searchArr:', searchArr);
-        // appendsFunc(searchArr)
-
     } catch (error) {
         console.log(' ~ error:', error);
 
     }
+};
+
+
+//filter for  dropdownlist
+
+const selectFun = async (el) => {
+    let filter = document.querySelector("#filter").value;
+
+    try {
+        let res = await fetch(api);
+    let data = await res.json();
+
+     let filterData = data.filter((el) => {
+      return filter === el.category;
+    });
+    appendsFunc(filterData);
+    } catch (error) {
+        console.log(error)
+   };
 }
