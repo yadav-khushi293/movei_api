@@ -6,6 +6,30 @@
   text-transform: capitalize;
   font-family: Roboto;
 }
+/******pagination css***/
+.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px  0px;
+  gap: 20px;
+}
+span{
+  font-size: 19px;
+  font-weight: bold;
+}
+#next,#prev{
+  width: 150px;
+  height: 53px;
+
+
+  
+  font-size: 23px;
+  font-weight: bold;
+  border-radius: 30px;
+}
+/******pagination css end***/
+
 .logo-img {
   width: 70px;
   height: 80px;
@@ -72,7 +96,7 @@ select {
 }
 
 body {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color:rgb(119, 199, 243);
 }
 .detailDiv {
   display: grid;

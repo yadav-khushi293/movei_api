@@ -1,5 +1,6 @@
 const api = `http://localhost:3000/cookie`;
-
+let page = 1; // current page
+let limit = 6; // items per page
 
 const storage = JSON.parse(sessionStorage.getItem('category'));
 
@@ -134,3 +135,42 @@ const selectFun = async (el) => {
         console.log(error)
    };
 }
+
+
+//Fetch paginated data
+const dataFetch = async () => {
+  try {
+    let res = await fetch(`${api}?_limit=${limit}&_page=${page}`);
+    let data = await res.json();
+    appendsFunc(data);
+    updateButtons(data.length);
+  } catch (error) {
+    console.log("Pagination Error:", error);
+  }
+};
+
+// Update Prev / Next buttons
+const updateButtons = (dataLength) => {
+  document.getElementById("prev").disabled = page === 1;
+  document.getElementById("next").disabled = dataLength < limit;
+  document.querySelector(".numOfPage").innerText = `Page: ${page}`;//show a current page
+};
+
+// Prev button click
+const prevBtnInvokation = () => {
+  if (page > 1) {
+    page--;
+    dataFetch();
+  }
+};
+
+// Next button click
+const nextBtnInvokation = () => {
+  page++;
+  dataFetch();
+};
+
+window.onload = () => {
+  ApiCall();      // for category dropdown
+  dataFetch();    // for initial paginated data
+};
