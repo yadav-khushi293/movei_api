@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <div class="container"></div>
+
+</body>
+<script type="module">
+    import {navbar,style}  from "./navebar.js";
+     const mainDiv = document.querySelector('.container').innerHTML=navbar();
+     let  styletage=document.createElement('style');
+     styletage.textContent=style();
+     document.head.append(styletage);
+
+
+</script>
+<script src="../BakeryShope/Cookies.js"></script>
+</html>

@@ -1,6 +1,6 @@
 const api = `http://localhost:3000/cookie`;
 let page = 1; // current page
-let limit = 6; // items per page
+let limit = 10; // items per page
 
 const storage = JSON.parse(sessionStorage.getItem('category'));
 
