@@ -9,6 +9,7 @@
    </head>
    <body onload="ApiCall()">
    
+   
      <nav>
         <ul>
             <img src="../img/Bakery Logo.svg" al="Logo" class="logo-img">
@@ -24,6 +25,15 @@
 
         </ul>
     </nav>
+
+     <div class="slide">
+            <h3>Filter</h3>
+            <div id="activeFilter"></div>
+            <ul>
+                <li onclick="sortHigh(this)">High To Low</li>
+                <li onclick="sortLow(this)">Low To High</li>
+            </ul>
+        </div>
 <!---side bar-->
 
    <div id="info"></div>

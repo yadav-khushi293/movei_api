@@ -174,3 +174,62 @@ window.onload = () => {
   ApiCall();      // for category dropdown
   dataFetch();    // for initial paginated data
 };
+
+
+
+/*** */
+const sidebar = () => {
+  const side = document.querySelector(".slide");
+  // logo = !logo;
+  // side.style.display = logo == false ? "none" : "block";
+  side.classList.toggle("active");
+};
+
+const sortHigh = async () => {
+  try {
+    const res = await fetch(api);
+    const data = await res.json();
+
+    const sortedData = data.sort((a, b) => b.price - a.price);
+    appendsFunc(sortedData);
+
+    const activeFilter = document.querySelector("#activeFilter");
+    activeFilter.innerHTML = `
+            <span>High To Low</span>
+            <button onclick="clearFilter()"><img src="./Utils/Close.svg"></button>
+            `;
+  } catch (error) {
+    console.log("Error While Sorting High To Low: ", error);
+  }
+};
+
+const sortLow = async () => {
+  try {
+    const res = await fetch(api);
+    const data = await res.json();
+
+    const sortedData1 = data.sort((a, b) => a.price - b.price);
+    appendsFunc(sortedData1);
+
+    const activeFilter = document.querySelector("#activeFilter");
+    activeFilter.innerHTML = `
+            <span>Low To High</span>
+            <button onclick="clearFilter()"><img src="./Utils/Close.svg"></button>
+            `;
+  } catch (error) {
+    console.log("Error While Sorting Low To High: ", error);
+  }
+};
+
+const clearFilter = async () => {
+  ApiCall();
+  document.querySelector("#activeFilter").innerHTML = "";
+
+  try {
+    const res = await fetch(api);
+    const data = await res.json();
+    appendsFunc(data);
+  } catch (error) {
+    console.log("Error While Clearing Filter: ", error);
+  }
+};

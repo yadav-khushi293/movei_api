@@ -1,6 +1,6 @@
 
 
-const registerApi = `http://localhost:8500/register`;
+const registerApi = `http://localhost:3000/register`;
 
 
 async function formData(e) {
@@ -16,7 +16,7 @@ async function formData(e) {
 
 
     try {
-        let response = await fetch(registerApi, {
+        let response = await fetch(loginApi, {
             method: 'POST',
             body: JSON.stringify(formObject),
             headers: {
