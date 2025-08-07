@@ -18,6 +18,6 @@ app.use(auth)
 app.use(router)
 
 // Start server
-app.listen(3000, () => {
-    console.log('JSON Server is running on http://localhost:3000')
+app.listen(8500, () => {
+    console.log('JSON Server is running on http://localhost:8500')
 })
