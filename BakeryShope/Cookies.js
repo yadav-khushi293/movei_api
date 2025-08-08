@@ -2,6 +2,9 @@ const api = `http://localhost:8500/cookie`;
 let page = 1; // current page
 let limit = 10; // items per page
 
+let log = document.querySelector('#Logo');
+log=false;
+
 const storage = JSON.parse(sessionStorage.getItem('category'));
 
 //filter the code 
@@ -58,6 +61,7 @@ const appendsFunc = (data) => {
         let rate = document.createElement('h3')
         let count = document.createElement('h3');
         let id = document.createElement('h3');
+        let button = document.createElement('button');
 
 
         cardDiv.className = 'card_div';
@@ -79,9 +83,10 @@ const appendsFunc = (data) => {
         rate.innerText = `Rate : ${element.rating.rate}`;
         count.innerText = `count : ${element.rating.count}`;
         id.innerText = `id : ${element.id}`;
+         button.innerText='Add To card';
 
         rating.append(rate, count);
-        cardDiv.append(img, id, title, price, category, description, rating);
+        cardDiv.append(img, id, title, price, category, description, rating,button);
 
         dataShow.append(cardDiv);
     });
@@ -180,6 +185,9 @@ const changeToLogin = () => {
 }
 
 
+const changetoCard = () => {
+    window.location = 'Card.html'
+}
 
 
 
@@ -187,8 +195,6 @@ const changeToLogin = () => {
 /*** */
 const sidebar = () => {
   const side = document.querySelector(".slide");
-  // logo = !logo;
-  // side.style.display = logo == false ? "none" : "block";
   side.classList.toggle("active");
 };
 
@@ -202,15 +208,18 @@ const sortHigh = async () => {
 
     const activeFilter = document.querySelector("#activeFilter");
     activeFilter.innerHTML = `
-            <span>High To Low</span>
-            <button onclick="clearFilter()"><img src="./Utils/Close.svg"></button>
+            <span>Low To High</span>
+            <button onclick="clearFilter()"><img src="../img/close.svg"></button>
             `;
+  document.querySelector(".slide").classList.remove("active");
+
   } catch (error) {
     console.log("Error While Sorting High To Low: ", error);
   }
 };
 
 const sortLow = async () => {
+  
   try {
     const res = await fetch(api);
     const data = await res.json();
@@ -221,11 +230,15 @@ const sortLow = async () => {
     const activeFilter = document.querySelector("#activeFilter");
     activeFilter.innerHTML = `
             <span>Low To High</span>
-            <button onclick="clearFilter()"><img src="./Utils/Close.svg"></button>
-            `;
+            <button onclick="clearFilter()"><img src="../img/close.svg"></button>
+            `;   
+    
+  document.querySelector(".slide").classList.remove("active");   
+
   } catch (error) {
     console.log("Error While Sorting Low To High: ", error);
   }
+ 
 };
 
 const clearFilter = async () => {

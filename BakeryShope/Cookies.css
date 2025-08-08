@@ -271,6 +271,7 @@ span {
 #activeFilter > button {
   margin-left: -8.5px;
   height: 31px;
+  width: 10px;
   font-weight: 700;
   border-radius: 0;
   border-top-right-radius: 5px;
@@ -280,7 +281,8 @@ span {
   padding: 0;
 }
 
-#activeFilter > button > img {
+ #activeFilter > button >img{
   height: inherit;
   object-fit: contain;
-}
+  width: 100px;
+} 

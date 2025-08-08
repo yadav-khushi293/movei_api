@@ -12,11 +12,11 @@
    
      <nav>
         <ul>
-            <img src="../img/Bakery Logo.svg" al="Logo" class="logo-img">
+            <img src="../img/Bakery Logo.svg" al="Logo" class="logo-img" id="Logo" onclick="sidebar()">
             <!-- <input name="search" type="search" placeholder="Search" onchange="searchFunc()" class="serchbar"> -->
              <input id="search" name="search" type="search" placeholder="Search" onchange="searchFunc()"  class="serchbar" />
             <li>Home</li>
-            <li>Cart</li>
+            <li onclick="changetoCard()">Cart</li>
             <li onclick="changeToLogin()">Sign Up</li>
    
             <!---dropdown-->
@@ -33,7 +33,7 @@
                 <li onclick="sortHigh(this)">High To Low</li>
                 <li onclick="sortLow(this)">Low To High</li>
             </ul>
-        </div>
+            </div>
 <!---side bar-->
 
    <div id="info"></div>

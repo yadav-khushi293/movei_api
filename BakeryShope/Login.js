@@ -35,4 +35,8 @@ async function loginForm(e) {
     }
 
 }
+const Loginbutton = () => {
+    window.location = 'Login.html'
+}
+
 
