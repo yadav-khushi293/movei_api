@@ -5,6 +5,20 @@ let limit = 10; // items per page
 let log = document.querySelector('#Logo');
 log=false;
 
+let cartArr = JSON.parse(sessionStorage.getItem("cartItem")) || [];
+console.log("cartArr: ", cartArr.length);
+
+const path = window.location.pathname;
+
+const cartLength = document.querySelector("span");
+if (path === "/Cookies.html") {
+  cartLength.style.display = cartArr.length < 0 ? "none" : "block";
+  cartLength.className = cartArr.length > 0 ? "cartLength-active" : "none";
+  cartLength.innerHTML = cartArr.length > 0 ? cartArr.length : "";
+}
+
+
+
 const storage = JSON.parse(sessionStorage.getItem('category'));
 
 //filter the code 
@@ -72,7 +86,7 @@ const appendsFunc = (data) => {
         price.className="placeholder";
          category.className="placeholder";
          img.className="placeholder";
-
+      
 
 
         img.src = element.image;
