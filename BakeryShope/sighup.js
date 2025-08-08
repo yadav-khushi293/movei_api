@@ -32,3 +32,6 @@ async function formData(e) {
         console.log( error);
     }
 }   
+const Loginbutton = () => {
+    window.location = 'Login.html'
+}

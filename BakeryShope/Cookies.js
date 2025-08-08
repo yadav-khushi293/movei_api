@@ -175,6 +175,13 @@ window.onload = () => {
   dataFetch();    // for initial paginated data
 };
 
+const changeToLogin = () => {
+    window.location = 'Singhpage.html'
+}
+
+
+
+
 
 
 /*** */
