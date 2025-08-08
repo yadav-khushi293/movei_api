@@ -1,23 +1,10 @@
-const api = `http://localhost:8500/cookie`;
+const api = `http://localhost:3000/cookie`;
 let page = 1; // current page
 let limit = 10; // items per page
+let allProducts
 
 let log = document.querySelector('#Logo');
 log=false;
-
-let cartArr = JSON.parse(sessionStorage.getItem("cartItem")) || [];
-console.log("cartArr: ", cartArr.length);
-
-const path = window.location.pathname;
-
-const cartLength = document.querySelector("span");
-if (path === "/Cookies.html") {
-  cartLength.style.display = cartArr.length < 0 ? "none" : "block";
-  cartLength.className = cartArr.length > 0 ? "cartLength-active" : "none";
-  cartLength.innerHTML = cartArr.length > 0 ? cartArr.length : "";
-}
-
-
 
 const storage = JSON.parse(sessionStorage.getItem('category'));
 
@@ -64,6 +51,9 @@ const ApiCall = () => {
 const appendsFunc = (data) => {
     let dataShow = document.querySelector('#info');
     dataShow.innerHTML = ''
+  
+      allProducts = data;
+
     data.forEach((element) => {
         let cardDiv = document.createElement('div');
         let title = document.createElement('h4');
@@ -77,7 +67,7 @@ const appendsFunc = (data) => {
         let id = document.createElement('h3');
         let button = document.createElement('button');
 
-
+        button.classList='cart';
         cardDiv.className = 'card_div';
         description.className = "text_div  placeholder";
         title.className = "title_div  placeholder";
@@ -98,6 +88,9 @@ const appendsFunc = (data) => {
         count.innerText = `count : ${element.rating.count}`;
         id.innerText = `id : ${element.id}`;
          button.innerText='Add To card';
+          
+        button.addEventListener("click",()=>AddTocard(element));
+        
 
         rating.append(rate, count);
         cardDiv.append(img, id, title, price, category, description, rating,button);
@@ -107,6 +100,17 @@ const appendsFunc = (data) => {
 
 };
 
+const AddTocard = async (id) => {
+    let api =`http://localhost:3000/cart`;
+
+    let response = await fetch(api, {
+        method: 'POST',
+        body: JSON.stringify(id),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+}
 
 //This for serching
 const searchFunc = async () => {
