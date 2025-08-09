@@ -97,7 +97,8 @@ select {
 }
 
 body {
-  background-color:rgb(119, 199, 243);
+  /* background-color:rgb(119, 199, 243); */
+  background-color: rgb(216, 115, 43);
 }
 .detailDiv {
   display: grid;
@@ -117,18 +118,18 @@ body {
   width: 95%;
 }
 .card_div {
-  width: 410px;
-  height: 490px;
+  width: 450px;
+  height: 605px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 10px 15px;
   background-color: #fff;
 }
 
 img {
-  height: 250px;
+  height: 280px;
   padding: 10px 0px;
-  width: 320px;
+  width: 350px;
   object-fit: cover;
   border-radius: inherit;
   border-bottom-left-radius: 0;
@@ -286,3 +287,20 @@ span {
   object-fit: contain;
   width: 100px;
 } 
+/*****Button*/
+
+.cart{
+  width: 45%;
+  border-radius: 10px;
+  font-size: 19px;
+  font-weight: bold;
+  background-color:chocolate;
+  border: transparent;
+  margin:22px 0px;
+  height: 55px;
+}
+.cart:hover{
+  background-color:palevioletred;
+  transition: all 0.3s ease-in-out;
+  
+}
