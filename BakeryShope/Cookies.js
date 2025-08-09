@@ -100,17 +100,56 @@ const appendsFunc = (data) => {
 
 };
 
-const AddTocard = async (id) => {
-    let api =`http://localhost:3000/cart`;
+// const AddTocard = async (id) => {
+//     let api =`http://localhost:3000/cart`;
 
-    let response = await fetch(api, {
-        method: 'POST',
-        body: JSON.stringify(id),
-        headers: {
-            'Content-Type': 'application/json',
+//     let response = await fetch(api, {
+//         method: 'POST',
+//         body: JSON.stringify(id),
+//         headers: {
+//             'Content-Type': 'application/json',
+//         }
+//     });
+// }
+
+const AddTocard = async (product) => {
+    const cartApi = `http://localhost:3000/cart`;
+
+    try {
+        // Step 1: Get current cart data
+        const res = await fetch(cartApi);
+        const cartItems = await res.json();
+
+        // Step 2: Check if product already in cart
+        const existingItem = cartItems.find((item) => item.id === product.id);
+
+        if (existingItem) {
+            // Step 3: If exists, increase count
+            await fetch(`${cartApi}/${existingItem.id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ count: existingItem.count + 1 })
+            });
+        } else {
+            // Step 4: If not exists, add new with count = 1
+            await fetch(cartApi, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ...product, count: 1 })
+            });
         }
-    });
-}
+
+        alert("Added to cart successfully!");
+
+    } catch (error) {
+        console.error("Error adding to cart:", error);
+    }
+};
+
 
 //This for serching
 const searchFunc = async () => {

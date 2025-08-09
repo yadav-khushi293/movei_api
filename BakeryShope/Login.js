@@ -38,5 +38,7 @@ async function loginForm(e) {
 const Loginbutton = () => {
     window.location = 'Login.html'
 }
-
+const sighup = () => {
+    window.location = 'Singhpage.html'
+}
 
