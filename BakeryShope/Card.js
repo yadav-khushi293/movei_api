@@ -1,17 +1,52 @@
-const api = `http://localhost:3000/cookie`;
+const api = `http://localhost:3000/cart`;
 let page = 1; // current page
 let limit = 10; // items per page
 let allProducts
 
-
+let log = document.querySelector('#Logo');
+log=false;
 
 const storage = JSON.parse(sessionStorage.getItem('category'));
 
 //filter the code 
 
+const countCategory = () => {
+
+      if (!storage) return;
+      
+    let filterSelect = document.querySelector("#filter");
+
+    Object.keys(storage).map((key) => {
+        let options = document.createElement('option');
+        options.value = key;
+        options.innerText = key;
+        filterSelect.append(options);
+    });
 
 
+}
 
+countCategory();
+
+const ApiCall = () => {
+    fetch(api)
+        .then((res) => res.json())
+        .then((res) => {
+          
+            let category = res.map((el) => el.category)
+            const countCategory = category.reduce((acc, fruit) => {
+                acc[fruit] = (acc[fruit] || 0) + 1;
+                return acc;
+            }, {});
+
+            sessionStorage.setItem('category', JSON.stringify(countCategory))
+
+            appendsFunc(res);
+
+        
+        })
+        .catch((err) => console.log(err));
+};
 
 const appendsFunc = (data) => {
     let dataShow = document.querySelector('#info');
@@ -65,6 +100,17 @@ const appendsFunc = (data) => {
 
 };
 
+// const AddTocard = async (id) => {
+//     let api =`http://localhost:3000/cart`;
+
+//     let response = await fetch(api, {
+//         method: 'POST',
+//         body: JSON.stringify(id),
+//         headers: {
+//             'Content-Type': 'application/json',
+//         }
+//     });
+// }
 
 const AddTocard = async (product) => {
     const cartApi = `http://localhost:3000/cart`;
@@ -105,6 +151,92 @@ const AddTocard = async (product) => {
 };
 
 
+//This for serching
+const searchFunc = async () => {
+
+
+    console.log(' ~ i am invoked :');
+
+    let search = document.querySelector("#search").value;
+    console.log(' ~ search:', search);
+    try {
+        let res = await fetch(api);
+        let data = await res.json()
+
+        let searchArr = data.filter((el) => {
+            return search === el.category || search === el.title;
+        })
+
+        // this line of code remove duplicate value
+        let uniqueSearchArr = searchArr.filter((item, index, self) =>
+       index === self.findIndex((t) => t.id === item.id)
+);
+ appendsFunc(uniqueSearchArr);
+
+    } catch (error) {
+        console.log(' ~ error:', error);
+
+    }
+};
+
+
+//filter for  dropdownlist
+
+const selectFun = async (el) => {
+    let filter = document.querySelector("#filter").value;
+
+    try {
+        let res = await fetch(api);
+    let data = await res.json();
+
+     let filterData = data.filter((el) => {
+      return filter === el.category;
+    });
+    appendsFunc(filterData);
+    } catch (error) {
+        console.log(error)
+   };
+}
+
+
+//Fetch paginated data
+const dataFetch = async () => {
+  try {
+    let res = await fetch(`${api}?_limit=${limit}&_page=${page}`);
+    let data = await res.json();
+    appendsFunc(data);
+    updateButtons(data.length);
+  } catch (error) {
+    console.log("Pagination Error:", error);
+  }
+};
+
+// Update Prev / Next buttons
+const updateButtons = (dataLength) => {
+  document.getElementById("prev").disabled = page === 1;
+  document.getElementById("next").disabled = dataLength < limit;
+  document.querySelector(".numOfPage").innerText = `Page: ${page}`;//show a current page
+};
+
+// Prev button click
+const prevBtnInvokation = () => {
+  if (page > 1) {
+    page--;
+    dataFetch();
+  }
+};
+
+// Next button click
+const nextBtnInvokation = () => {
+  page++;
+  dataFetch();
+};
+
+window.onload = () => {
+  ApiCall();      // for category dropdown
+  dataFetch();    // for initial paginated data
+};
+
 const changeToLogin = () => {
     window.location = 'Singhpage.html'
 }
@@ -114,3 +246,67 @@ const changetoCard = () => {
     window.location = 'Card.html'
 }
 
+
+
+
+/*** */
+const sidebar = () => {
+  const side = document.querySelector(".slide");
+  side.classList.toggle("active");
+};
+
+const sortHigh = async () => {
+  try {
+    const res = await fetch(api);
+    const data = await res.json();
+
+    const sortedData = data.sort((a, b) => b.price - a.price);
+    appendsFunc(sortedData);
+
+    const activeFilter = document.querySelector("#activeFilter");
+    activeFilter.innerHTML = `
+            <span>Low To High</span>
+            <button onclick="clearFilter()"><img src="../img/close.svg"></button>
+            `;
+  document.querySelector(".slide").classList.remove("active");
+
+  } catch (error) {
+    console.log("Error While Sorting High To Low: ", error);
+  }
+};
+
+const sortLow = async () => {
+  
+  try {
+    const res = await fetch(api);
+    const data = await res.json();
+
+    const sortedData1 = data.sort((a, b) => a.price - b.price);
+    appendsFunc(sortedData1);
+
+    const activeFilter = document.querySelector("#activeFilter");
+    activeFilter.innerHTML = `
+            <span>Low To High</span>
+            <button onclick="clearFilter()"><img src="../img/close.svg"></button>
+            `;   
+    
+  document.querySelector(".slide").classList.remove("active");   
+
+  } catch (error) {
+    console.log("Error While Sorting Low To High: ", error);
+  }
+ 
+};
+
+const clearFilter = async () => {
+  ApiCall();
+  document.querySelector("#activeFilter").innerHTML = "";
+
+  try {
+    const res = await fetch(api);
+    const data = await res.json();
+    appendsFunc(data);
+  } catch (error) {
+    console.log("Error While Clearing Filter: ", error);
+  }
+};

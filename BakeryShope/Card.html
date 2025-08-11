@@ -1,19 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cart Page</title>
-  <link rel="stylesheet" href="../BakeryShope/Cookies.css">
-</head>
-<body>
+ <!DOCTYPE html>
+   <html lang="en">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../BakeryShope/Cookies.css">
 
-  
-  <div id="cartContainer"></div>
+   </head>
+   <body onload="ApiCall()">
+   
+   
+     <nav>
+        <ul>
+            <img src="../img/Bakery Logo.svg" al="Logo" class="logo-img" id="Logo" onclick="sidebar()">
+            <!-- <input name="search" type="search" placeholder="Search" onchange="searchFunc()" class="serchbar"> -->
+             <input id="search" name="search" type="search" placeholder="Search" onchange="searchFunc()"  class="serchbar" />
+            <li>Home</li>
+            <li onclick="changetoCard()">Cart</li>
+            <li onclick="changeToLogin()">Sign Up</li>
+   
+            <!---dropdown-->
+            <select name="Filter" id="filter"  onclick="selectFun()">
+            </select>
 
-  
+        </ul>
+    </nav>
+
+     <div class="slide">
+            <h3>Filter</h3>
+            <div id="activeFilter"></div>
+            <ul>
+                <li onclick="sortHigh(this)">High To Low</li>
+                <li onclick="sortLow(this)">Low To High</li>
+            </ul>
+            </div>
+<!---side bar-->
+
    <div id="info"></div>
 
-  <script src="../BakeryShope/Card.js"></script>
-</body>
-</html>
+   <div class="btn">
+  <input id="prev" value="Prev" type="button" onclick="prevBtnInvokation()">
+  <span class="numOfPage">Page: 1</span>
+  <input id="next" value="Next" type="button" onclick="nextBtnInvokation()">
+</div>
+
+
+
+   </body>
+   <script src="../BakeryShope/Card.js"> </script>
+   </html>
+  
