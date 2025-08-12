@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form  name="myRadio" onsubmit="myRadioFunc(event)">
+        <input type="radio" name="content" value="office">office</input>
+        <input type="radio" name="content" value="home">home</input>
+        <input type="radio" name="content" value="vacation">vacation</input>
+        <input type="radio" name="content" value="adventure">adventure</input>
+        <p id="massage"></p>
+        <button type="submit">submit</button>
+
+
+    </form>
+</body>
+<script>
+    function myRadioFunc(e){
+
+        e.preventDefault();
+
+        let radioData = document.myRadio.content;
+        // console.log(radioData)
+
+        for(let i=0; i<radioData.length; i++){
+            if(radioData[i].checked===true){
+            return true;
+            }
+        
+        }
+
+        document.getElementById("massage").innerHTML="pls select any"
+        return false;
+    }
+</script>
+</html>
