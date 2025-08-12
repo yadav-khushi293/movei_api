@@ -65,7 +65,9 @@ const appendsFunc = (data) => {
         let rate = document.createElement('h3')
         let count = document.createElement('h3');
         let id = document.createElement('h3');
+        let div1 = document.createElement("div1");
         let button = document.createElement('button');
+        let checkout_btn = document.createElement('button');
 
         button.classList='cart';
         cardDiv.className = 'card_div';
@@ -76,7 +78,8 @@ const appendsFunc = (data) => {
         price.className="placeholder";
          category.className="placeholder";
          img.className="placeholder";
-      
+          checkout_btn.classList="checkout_button";
+          div1.classList="div1";
 
 
         img.src = element.image;
@@ -88,29 +91,20 @@ const appendsFunc = (data) => {
         count.innerText = `count : ${element.rating.count}`;
         id.innerText = `id : ${element.id}`;
          button.innerText='Add To card';
+         checkout_btn.innerText='Checkout';
           
         button.addEventListener("click",()=>AddTocard(element));
         
-
+        div1.append(button,checkout_btn)
         rating.append(rate, count);
-        cardDiv.append(img, id, title, price, category, description, rating,button);
+        cardDiv.append(img, id, title, price, category, description, rating, div1);
 
         dataShow.append(cardDiv);
     });
 
 };
 
-// const AddTocard = async (id) => {
-//     let api =`http://localhost:3000/cart`;
 
-//     let response = await fetch(api, {
-//         method: 'POST',
-//         body: JSON.stringify(id),
-//         headers: {
-//             'Content-Type': 'application/json',
-//         }
-//     });
-// }
 
 const AddTocard = async (product) => {
     const cartApi = `http://localhost:3000/cart`;
