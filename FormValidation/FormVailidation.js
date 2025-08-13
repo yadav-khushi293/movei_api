@@ -1,10 +1,11 @@
 
-function myform() {
-    let userName = document.getElementsByName("user").value;
-    let  password = document.getElementsByName("pass").value;
-    let confirmPassword= document.getElementsByName("confpass").value;
-    let mobile = document.getElementsByName("mobile_number").value;
-     let  email  = document.getElementsByName("email").value;
+function myform(e) {
+    e.preventDefault();
+    let userName = document.getElementById("user").value;
+    let  password = document.getElementById("pass").value;
+    let confirmPassword= document.getElementById("confpass").value;
+    let mobile = document.getElementById("mobile_number").value;
+     let  email  = document.getElementById("email").value;
 
     if(userName  == ""){
         document.getElementById("username_msg").innerHTML="**** Please fill the userName field";
@@ -16,6 +17,9 @@ function myform() {
     }else if(!isNaN("userName")){
         document.getElementById("username_msg").innerHTML="**Only characters are allowed ";
         return false;
+    }else{
+        
+      document.getElementById("username_msg").innerHTML="";
     }
 
 
@@ -32,6 +36,8 @@ function myform() {
   } else if (password != confirmPassword) {
     document.getElementById("confpass_msg").innerHTML =" ** Password Not Matched";
     return false;
+  }else{
+    document.getElementById("pass_msg").innerHTML ="";
   }
 
   //confirPass Validation
@@ -39,6 +45,10 @@ function myform() {
   if (confirmPassword == "") {
     document.getElementById("confpass_msg").innerHTML =" ** Please fill the confirmPassword field";
     return false;
+  }
+  
+  else{
+        document.getElementById("confpass_msg").innerHTML ="";
   }
 
   //mobileNumber validation
@@ -52,6 +62,8 @@ function myform() {
   } else if (mobile.length != 10) {
     document.getElementById("mobile_msg").innerHTML =" ** Mobile number must be a 10 digit.";
     return false;
+  }else{
+        document.getElementById("mobile_msg").innerHTML ="";
   }
 
 
@@ -73,7 +85,10 @@ function myform() {
   ) {
     document.getElementById("email_msg").innerHTML = " **  Invalid Position.";
     return false;
+  }else{
+    document.getElementById("email_msg").innerHTML ="";
   }
+  
 }
 
 
