@@ -54,6 +54,8 @@ const appendsFunc = (data) => {
   
       allProducts = data;
 
+      
+
     data.forEach((element) => {
         let cardDiv = document.createElement('div');
         let title = document.createElement('h4');
@@ -232,10 +234,7 @@ const nextBtnInvokation = () => {
   dataFetch();
 };
 
-window.onload = () => {
-  ApiCall();      // for category dropdown
-  dataFetch();    // for initial paginated data
-};
+
 
 const changeToLogin = () => {
     window.location = 'Singhpage.html'
@@ -309,4 +308,25 @@ const clearFilter = async () => {
   } catch (error) {
     console.log("Error While Clearing Filter: ", error);
   }
+};
+
+const cart_num = async () => {
+
+  try {
+    let res = await fetch(`http://localhost:3000/cart`);
+    let cartData = await res.json();
+
+    let total = cartData.reduce((sum, item) => {
+      return sum + (item.count || 0);
+    }, 0);
+    document.querySelector("#cart_num").innerHTML = total;
+  } catch (error) {
+    console.log("Error updating cart total:", error);
+  }
+};
+
+window.onload = () => {
+  ApiCall();      // for category dropdown
+  dataFetch();    // for initial paginated data
+  cart_num();
 };
