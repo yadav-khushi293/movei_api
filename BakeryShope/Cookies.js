@@ -120,6 +120,11 @@ const AddTocard = async (product) => {
     try {
         // Step 1: Get current cart data
         const res = await fetch(cartApi);
+
+
+
+
+        
         const cartItems = await res.json();
 
         // Step 2: Check if product already in cart
