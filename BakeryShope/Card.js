@@ -1,12 +1,31 @@
 const api = `http://localhost:3000/cart`;
 let page = 1; // current page
 let limit = 10; // items per page
+let text = "🔍  Search For What You Want";
+let input;
+let i = 0;
+
+
 let allProducts
 
 let log = document.querySelector('#Logo');
 log=false;
 
 const storage = JSON.parse(sessionStorage.getItem('category'));
+input = document.querySelector("#search");
+
+
+const typePlaceholder = () => {
+  if (!input) return;
+  if (i <= text.length) {
+    input.setAttribute("placeholder", text.substring(0, i));
+    i++;
+    setTimeout(typePlaceholder, 100);
+  } else {
+    i = 0;
+    setTimeout(typePlaceholder, 1100);
+  }
+};
 
 //filter the code 
 
@@ -305,3 +324,8 @@ const clearFilter = async () => {
   }
 };
 
+window.onload=()=>{
+   ApiCall();      // for category dropdown
+  dataFetch();    // for initial paginated data
+  typePlaceholder();
+}
