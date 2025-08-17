@@ -5,13 +5,13 @@ let text = "🔍  Search For What You Want";
 let input;
 let i = 0;
 
-
 let allProducts
 
 let log = document.querySelector('#Logo');
 log=false;
 
 const storage = JSON.parse(sessionStorage.getItem('category'));
+let cartItem = JSON.parse(localStorage.getItem('cartItem')) || [];
 input = document.querySelector("#search");
 
 
@@ -109,12 +109,34 @@ const appendsFunc = (data) => {
         rate.innerText = `Rate : ${element.rating.rate}`;
         count.innerText = `count : ${element.rating.count}`;
         id.innerText = `id : ${element.id}`;
-         button.innerText='Add To card';
+         button.innerText='Remove';
          checkout_btn.innerText='Checkout';
-          
-        button.addEventListener("click",()=>AddTocard(element));
+
+         //remove checkout_button 
+
+         checkout_btn.addEventListener("click", () => {
+         localStorage.setItem("cartItem", JSON.stringify([element])); 
+          window.location.href = "Check.html";
+    });
+          //remove button
         
-        div1.append(button,checkout_btn)
+        button.addEventListener('click',function(){
+
+            // crrtArr.push(element);
+
+            let deleteData = cartItem.filter((dl)=>{
+                return dl.id !== element.id
+            })
+
+            cartItem = deleteData;
+            localStorage.setItem('cartItem',JSON.stringify(cartItem));
+             storeUI(cartItem);
+        })
+        // checkout_btn.addEventListener('click', () => {
+        //     window.location = 'Check.html'
+        // });
+        
+        div1.append(checkout_btn,button)
         rating.append(rate, count);
         cardDiv.append(img, id, title, price, category, description, rating, div1);
 
