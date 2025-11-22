@@ -1,0 +1,46 @@
+[
+    {
+        "id":1,
+        "f_name":"khushi",
+        "l_name":"yadav",
+        "age":30
+    },
+    {
+        "id":2,
+        "f_name":"hetuk",
+        "l_name":"patal",
+        "age":40
+    },
+
+    {
+        "id":3,
+        "f_name":"siraj",
+        "l_name":"shekh",
+        "age":30
+    },
+    {
+        "id":4,
+        "f_name":"mehfooz",
+        "l_name":"khan",
+        "age":40
+    },
+
+    {
+        "id":5,
+        "f_name":"rohan",
+        "l_name":"khan",
+        "age":30
+    },
+    {
+        "id":6,
+        "f_name":"sohan",
+        "l_name":"sharma",
+        "age":50
+    },
+    {
+        "id":7,
+        "f_name":"anjali",
+        "l_name":"vishwkarma",
+        "age":20
+    }
+]

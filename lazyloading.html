@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>lazy loading</h1>
+    <input type="text" placeholder="enter the anything">
+</body>
+<script>
+    function loadScript(url){
+
+        let isLoaded = document.querySelectorAll(".dynamic-script");
+        if(isLoaded ===null || isLoaded ===undefined || isLoaded.length>0){
+            console.log("not loading the scripts");
+            return;
+        }
+        let myScript = document.createElement("script");
+        myScript.src=url;
+        myScript.classList="dynamic-script";
+        document.body.append(myScript);
+        console.log("loading the script")
+
+    }
+
+    let searchInput = document.querySelector("#searchInput");
+
+    searchInput.addEventListener('focus',function(){
+    //    jq url
+    })
+</script>
+</html>
