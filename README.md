@@ -1,10 +1,5 @@
-//js
-//html
-//css
+//html'
 
-//project linkes
-//react
-//html
 
 ===>>>===>>sweets website
 
