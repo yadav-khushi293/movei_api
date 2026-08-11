@@ -5,7 +5,4 @@ frghjk
 #flower shop  website <br>
 #Wine shop  website<br>
 #perfume shop website <br>
-
-uuunnnnhhhu
-huui
-tttthh
+$~`|•√π÷×§∆€$¢°^={}\%©®™✓[]><
